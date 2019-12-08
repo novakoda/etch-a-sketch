@@ -1,11 +1,13 @@
 const gridCont = document.getElementById('gridCont');
+const newGridBtn = document.getElementById('newGridBtn');
+let aGrid = false;
 
-function makeRows(rows, cols) {
-  gridCont.style.setProperty('--grid-rows', rows);
-  gridCont.style.setProperty('--grid-cols', cols);
-  for (c = 0; c < (rows * cols); c++) {
+function makeRows(sideLength) {
+  deleteGrid();
+  gridCont.style.setProperty('--grid-rows', sideLength);
+  gridCont.style.setProperty('--grid-cols', sideLength);
+  for (i = 0; i < (sideLength * sideLength); i++) {
     let cell = document.createElement("div");
-    //cell.innerText = (c + 1);
     cell.onmouseover = function(){
       cell.style.backgroundColor = 'black';
     };
@@ -13,10 +15,30 @@ function makeRows(rows, cols) {
   };
 };
 
-makeRows(16, 16);
-
-let gridCell = document.getElementByClassName('gridCell');
-
-gridCell.onmouseover = function(){
-  gridCell.style.backgroundColor = 'black';
+function clearGrid() {
+  for(i = 0; i < cells.length; i++) {
+    cells[i].style.backgroundColor = "#DDD";
+  }
 };
+
+function deleteGrid() {
+    document.querySelectorAll(".gridCell").forEach((gridCell) => gridCell.remove());
+}
+
+makeRows(11);
+aGrid = true;
+
+let cells = document.getElementsByClassName("gridCell");
+
+newGridBtn.addEventListener("click", function() {
+    clearGrid();
+
+    let count = prompt('How many rows & columns do you want?', '16');
+
+    makeRows(count);
+    aGrid = true;
+  }
+);
+
+// also tried this but it didn't work
+// document.getElementById("newGridBtn").onclick = clearGrid;

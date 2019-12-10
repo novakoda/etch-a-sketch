@@ -4,10 +4,13 @@ let aGrid = false;
 
 function makeRows(sideLength) {
   deleteGrid();
+  const gridArea = gridCont.scrollWidth;
   gridCont.style.setProperty('--grid-rows', sideLength);
   gridCont.style.setProperty('--grid-cols', sideLength);
   for (i = 0; i < (sideLength * sideLength); i++) {
     let cell = document.createElement("div");
+    cell.style.height = `${gridArea / sideLength}px`;
+    cell.style.width = `${gridArea / sideLength}px`;
     cell.onmouseover = function(){
       cell.style.backgroundColor = 'black';
     };
@@ -15,9 +18,11 @@ function makeRows(sideLength) {
   };
 };
 
+
+
 function clearGrid() {
   for(i = 0; i < cells.length; i++) {
-    cells[i].style.backgroundColor = "#DDD";
+    cells[i].style.backgroundColor = "#FFF";
   }
 };
 

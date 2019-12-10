@@ -11,6 +11,23 @@ body {
 
 #info {
   display: flex;
+  justify-content: center;
+  padding: 2em;
+}
+
+#colorBar {
+  display: flex;
+  justify-content: center;
+}
+
+.colorBtns {
+  margin: 1em;
+  padding: 10px;
+}
+
+#randomBtn {
+  margin: 1em;
+  padding: 10px;
 }
 
 #mainCont {
